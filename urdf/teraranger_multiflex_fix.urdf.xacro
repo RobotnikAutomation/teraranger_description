@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="teraranger_multiflex" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="teraranger_multiflex" params="prefix id x y z roll pitch yaw gaussian_noise">
+    <xacro:macro name="teraranger_multiflex" params="prefix parent id x y z roll pitch yaw gaussian_noise">
 
         <link name="${prefix}_base_range_${id}">
             <visual>
@@ -17,7 +17,7 @@
 
         <joint name="${prefix}_joint_${id}" type="fixed">
             <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
-            <parent link="${prefix}_base"/>
+            <parent link="${parent}"/>
             <child link="${prefix}_base_range_${id}"/>
         </joint>
 
